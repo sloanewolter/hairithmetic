@@ -3,7 +3,7 @@ package com.hairithmetic.app.Models;
 import jakarta.persistence.Entity;
 
 @Entity
-public class Products {
+public class Products extends AbstractEntity {
 
     private String nameOfProduct;
 
