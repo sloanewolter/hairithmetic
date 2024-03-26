@@ -45,10 +45,6 @@ const AddNewHairProfile = () => {
       let response = await axios.post("/hairithmetic/profile", hairProfileData, {
         headers: headers
       });
-          if (!response.ok) {
-            console.error('Error during activity submission:', response.status);
-            return;
-          }
         setGoalLength('');
         setCurrentLength('');
         setHairPorosity('');

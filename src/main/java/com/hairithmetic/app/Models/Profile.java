@@ -2,20 +2,18 @@ package com.hairithmetic.app.Models;
 import jakarta.persistence.Entity;
 
 @Entity
-public class Goals extends AbstractEntity {
+public class Profile extends AbstractEntity {
 
     private double goalLength;
     private double currentLength;
 
     private String hairPorosity;
 
-    private String howOftenWash;
-
     private String howOily;
 
     private String howActive;
 
-    public Goals() {
+    public Profile() {
     }
 
     public double getGoalLength() {
@@ -42,13 +40,6 @@ public class Goals extends AbstractEntity {
         this.hairPorosity = hairPorosity;
     }
 
-    public String getHowOftenWash() {
-        return howOftenWash;
-    }
-
-    public void setHowOftenWash(String howOftenWash) {
-        this.howOftenWash = howOftenWash;
-    }
 
     public String getHowOily() {
         return howOily;

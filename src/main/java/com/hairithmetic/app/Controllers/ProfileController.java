@@ -1,7 +1,6 @@
 package com.hairithmetic.app.Controllers;
-import com.hairithmetic.app.Data.GoalsRepository;
-import com.hairithmetic.app.Models.Goals;
-
+import com.hairithmetic.app.Data.ProfileRepository;
+import com.hairithmetic.app.Models.Profile;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,49 +9,50 @@ import java.net.URISyntaxException;
 import java.util.List;
 
 @RestController
-@RequestMapping("/hairithmetic/goals")
-public class GoalsController {
+@CrossOrigin(origins = "*")
+@RequestMapping("/hairithmetic/profile")
 
-    private final GoalsRepository goalsRepository;
+public class ProfileController {
 
-    public GoalsController(GoalsRepository goalsRepository) {
-        this.goalsRepository = goalsRepository;
+    private final ProfileRepository profileRepository;
+
+    public ProfileController(ProfileRepository profileRepository) {
+        this.profileRepository = profileRepository;
     }
 
     @GetMapping
-    public List<Goals> getGoals() {
-        return (List<Goals>) goalsRepository.findAll();
+    public List<Profile> getProfile() {
+        return (List<Profile>) profileRepository.findAll();
     }
 
 
     @GetMapping("/{id}")
-    public Goals getGoal(@PathVariable int id) {
-        return goalsRepository.findById(id).orElseThrow(RuntimeException::new);
+    public Profile getProfile(@PathVariable int id) {
+        return profileRepository.findById(id).orElseThrow(RuntimeException::new);
     }
 
     @PostMapping
-    public ResponseEntity createProduct(@RequestBody Goals goals) throws URISyntaxException {
-        Goals savedGoal = goalsRepository.save(goals);
-        return ResponseEntity.created(new URI("/hairithmetic/goals/" + savedGoal.getId())).body(savedGoal);
+    public ResponseEntity createProfile(@RequestBody Profile profile) throws URISyntaxException {
+        Profile savedProfile= profileRepository.save(profile);
+        return ResponseEntity.created(new URI("/hairithmetic/profile/" + savedProfile.getId())).body(savedProfile);
     }
 
     //will allow us to update/edit an activity
     @PutMapping("/{id}")
-    public ResponseEntity updateStyleLog(@PathVariable int id, @RequestBody Goals goal) {
-        Goals currentGoal = goalsRepository.findById(id).orElseThrow(RuntimeException::new);
-        currentGoal.setGoalLength(goal.getGoalLength());
-        currentGoal.setCurrentLength(goal.getCurrentLength());
-        currentGoal.setHairPorosity(goal.getHairPorosity());
-        currentGoal.setHowActive(goal.getHowActive());
-        currentGoal.setHowOily(goal.getHowOily());
-        currentGoal.setHowOftenWash(goal.getHowOftenWash());
-        goalsRepository.save(currentGoal);
-        return ResponseEntity.ok(currentGoal);
+    public ResponseEntity updateProfile(@PathVariable int id, @RequestBody  Profile profile) {
+        Profile currentProfile = profileRepository.findById(id).orElseThrow(RuntimeException::new);
+        currentProfile.setGoalLength(profile.getGoalLength());
+        currentProfile.setCurrentLength(profile.getCurrentLength());
+        currentProfile.setHairPorosity(profile.getHairPorosity());
+        currentProfile.setHowActive(profile.getHowActive());
+        currentProfile.setHowOily(profile.getHowOily());
+        profileRepository.save(currentProfile);
+        return ResponseEntity.ok(currentProfile);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity deleteProduct(@PathVariable int id) {
-        goalsRepository.deleteById(id);
+    public ResponseEntity deleteProfile(@PathVariable int id) {
+        profileRepository.deleteById(id);
         return ResponseEntity.ok().build();
     }
 

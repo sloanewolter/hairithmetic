@@ -11,6 +11,7 @@ import java.net.URISyntaxException;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping("/hairithmetic/products")
 public class ProductsController {
 
