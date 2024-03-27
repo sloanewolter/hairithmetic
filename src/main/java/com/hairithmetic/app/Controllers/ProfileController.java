@@ -41,7 +41,6 @@ public class ProfileController {
     @PutMapping("/{id}")
     public ResponseEntity updateProfile(@PathVariable int id, @RequestBody  Profile profile) {
         Profile currentProfile = profileRepository.findById(id).orElseThrow(RuntimeException::new);
-        currentProfile.setGoalLength(profile.getGoalLength());
         currentProfile.setCurrentLength(profile.getCurrentLength());
         currentProfile.setHairPorosity(profile.getHairPorosity());
         currentProfile.setHowActive(profile.getHowActive());

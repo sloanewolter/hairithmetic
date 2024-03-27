@@ -4,7 +4,7 @@ import jakarta.persistence.Entity;
 @Entity
 public class Profile extends AbstractEntity {
 
-    private double goalLength;
+
     private double currentLength;
 
     private String hairPorosity;
@@ -16,13 +16,6 @@ public class Profile extends AbstractEntity {
     public Profile() {
     }
 
-    public double getGoalLength() {
-        return goalLength;
-    }
-
-    public void setGoalLength(double goalLength) {
-        this.goalLength = goalLength;
-    }
 
     public double getCurrentLength() {
         return currentLength;
