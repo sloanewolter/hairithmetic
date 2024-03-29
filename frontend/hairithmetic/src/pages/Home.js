@@ -25,6 +25,12 @@ const Home = () => {
             <div>
                 <Link to ="/hairithmetic/log/new">Add a Style Log Entry</Link>
             </div>
+            <div>
+                <Link to ="/hairithmetic/goals">My Hair Goals</Link>
+            </div>
+            <div>
+                <Link to ="/hairithmetic/goals/new">Add New Hair Goals</Link>
+            </div>
         </div>
     </div>
   )

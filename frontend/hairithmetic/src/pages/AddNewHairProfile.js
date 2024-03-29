@@ -3,16 +3,11 @@ import { Link, useParams, withRouter, useNavigate } from 'react-router-dom';
 import axios from '../components/api/axiosConfig'
 
 const AddNewHairProfile = () => {
-  const [goalLength, setGoalLength] = useState('');
   const [currentLength, setCurrentLength] = useState('');
   const [hairPorosity, setHairPorosity] = useState('');
   const [howOily, setHowOily] = useState('');
   const [howActive, setHowActive] = useState('');
 
-  
-  const handleGoalLengthChange = (event) => {
-    setGoalLength(event.target.value);
-  };
 
   const handleCurrentLengthChange = (event) => {
     setCurrentLength(event.target.value);
@@ -33,7 +28,7 @@ const AddNewHairProfile = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const hairProfileData = { goalLength, currentLength, hairPorosity, howOily, howActive }
+    const hairProfileData = { currentLength, hairPorosity, howOily, howActive }
     const headers = {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
@@ -45,7 +40,6 @@ const AddNewHairProfile = () => {
       let response = await axios.post("/hairithmetic/profile", hairProfileData, {
         headers: headers
       });
-        setGoalLength('');
         setCurrentLength('');
         setHairPorosity('');
         setHowOily('');
@@ -63,10 +57,6 @@ const AddNewHairProfile = () => {
       <label>
         Current Hair Length in inches:
         <input type="text" value={currentLength} onChange={handleCurrentLengthChange} />
-      </label>
-      <label>
-        Goal Hair Length in inches:
-        <input type="text" value={goalLength} onChange={handleGoalLengthChange} />
       </label>
       <label>
         Select Your Hair Porosity:

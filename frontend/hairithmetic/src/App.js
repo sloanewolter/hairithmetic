@@ -6,6 +6,10 @@ import AddNewHairProfile from './pages/AddNewHairProfile';
 import AddNewStyleLog from './pages/AddNewStyleLog';
 import AddNewProduct from './pages/AddNewProduct';
 import AddNewGoals from './pages/AddNewGoals';
+import DisplayGoals from './pages/HairGoals';
+import DisplayProducts from './pages/ProductList';
+import DisplayLogs from './pages/StyleLog';
+import DisplayProfiles from './pages/Profile';
 
 
 
@@ -19,6 +23,10 @@ class App extends Component {
         <Route path='/hairithmetic/log/new' exact={true} element= {<AddNewStyleLog/>}/>
         <Route path = '/hairithmetic/products/new' exact={true} element = {<AddNewProduct/>}/>
         <Route path = '/hairithmetic/goals/new' exact = {true} element = {<AddNewGoals/>}/>
+        <Route path = '/hairithmetic/goals' exact ={true} element = {<DisplayGoals/>}/>
+        <Route path = '/hairithmetic/products' exact ={true} element = {<DisplayProducts/>}/>
+        <Route path = '/hairithmetic/log' exact = {true} element = {<DisplayLogs/>}/>
+        <Route path = '/hairithmetic/profile' exact = {true} element = {<DisplayProfiles/>}/>
       </Routes>
     
       </div>
